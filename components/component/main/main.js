@@ -17,11 +17,11 @@ window.app = new Vue({
         currentView:"loading",
         appid:"wx8e3f800a1ec51085",/*绍兴柯桥*/
         auth:{
-            //openid:"oy8Uxs8CjNenvQgMGL1afUfTqy_o",
-            openid:"",
+            openid:"oy8Uxs8CjNenvQgMGL1afUfTqy_o",
+            //openid:"",
             app:"yhsl",
-            //unionid:"olNcSt_WsUycvqzvFG-86kyIO0MQ",
-            unionid:"",
+            unionid:"olNcSt_WsUycvqzvFG-86kyIO0MQ",
+            //unionid:"",
             suid:"560a47af0bb9ab56cf789e81"
         },
         info:{
@@ -48,47 +48,47 @@ window.app = new Vue({
         var self = this;
         Fastclick.FastClick.attach(document.body);
 
-        var code = Service.GetQueryString("code","hash"),
-            unionid = Service.GetQueryString("unionid"),
-            openid  = Service.GetQueryString("openid"),
-            suid  = Service.GetQueryString("suid");
-
-        if(code){
-
-            Layer.open({
-                content: "加载中",
-                type: 2,
-                shadeClose: false,
-                shade: false
-            });
-            Service.getUserInfo({code:code,appid:this.appid}, function (rep) {
-                Layer.closeAll();
-                if(rep.code && rep.code == 1){
-                    self.auth = JSON.parse(localStorage[self.appid]);
-                }else{
-                    self.auth.unionid = rep.unionid;
-                    self.auth.openid = rep.openid;
-
-                    localStorage[self.appid] = JSON.stringify(self.auth);
-
-                    if(!localStorage[self.appid +"isBind"]){
-                        Service.bindUser({
-                            unionid: self.auth.unionid,
-                            openid: self.auth.openid,
-                            suid: self.auth.suid,
-                            app: "yhsl"
-                        },function(rep){
-                            localStorage[self.appid +"isBind"] = true;
-                        })
-                    }
-                }
-            });
-        }else if(unionid){
-            self.auth.unionid = unionid;
-            self.auth.openid = openid;
-        }else{
-            self.auth = JSON.parse(localStorage[self.appid]);
-        }
+        //var code = Service.GetQueryString("code","hash"),
+        //    unionid = Service.GetQueryString("unionid"),
+        //    openid  = Service.GetQueryString("openid"),
+        //    suid  = Service.GetQueryString("suid");
+        //
+        //if(code){
+        //
+        //    Layer.open({
+        //        content: "加载中",
+        //        type: 2,
+        //        shadeClose: false,
+        //        shade: false
+        //    });
+        //    Service.getUserInfo({code:code,appid:this.appid}, function (rep) {
+        //        Layer.closeAll();
+        //        if(rep.code && rep.code == 1){
+        //            self.auth = JSON.parse(localStorage[self.appid]);
+        //        }else{
+        //            self.auth.unionid = rep.unionid;
+        //            self.auth.openid = rep.openid;
+        //
+        //            localStorage[self.appid] = JSON.stringify(self.auth);
+        //
+        //            if(!localStorage[self.appid +"isBind"]){
+        //                Service.bindUser({
+        //                    unionid: self.auth.unionid,
+        //                    openid: self.auth.openid,
+        //                    suid: self.auth.suid,
+        //                    app: "yhsl"
+        //                },function(rep){
+        //                    localStorage[self.appid +"isBind"] = true;
+        //                })
+        //            }
+        //        }
+        //    });
+        //}else if(unionid){
+        //    self.auth.unionid = unionid;
+        //    self.auth.openid = openid;
+        //}else{
+        //    self.auth = JSON.parse(localStorage[self.appid]);
+        //}
         document.title = this.title;
 
     }

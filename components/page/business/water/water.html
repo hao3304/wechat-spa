@@ -29,16 +29,7 @@
                         <td>用户地址:</td>
                         <td colspan=3>{{detail.addr}}</td>
                     </tr>
-                    <tr>
-                        <td>收费周期:</td>
-                        <td colspan=3>{{detail.payperiod}}</td>
-                    </tr>
-                    <tr>
-                        <td>抄见度数:</td>
-                        <td>{{detail.degree}}</td>
-                        <td>抄见日期:</td>
-                        <td>{{detail.recorddate}}</td>
-                    </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -53,7 +44,7 @@
                     <tbody>
 
                     <tr v-repeat="l in detail.list">
-                        <td>{{l.useperiod}}</td>
+                        <td>{{getDate(l.useperiod)}}</td>
                         <td>{{l.usedcount}}</td>
                         <td>{{l.charge}}</td>
                         <td>{{l.paystatus}}</td>

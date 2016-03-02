@@ -36,6 +36,14 @@ module.exports = Vue.extend({
             this.getFee(sn);
             $(".mui-popover").removeClass("mui-active").hide();
             $(".mui-backdrop").remove();
+        },
+        getDate: function (v) {
+            var o = v.split("--");
+            if(o.length>1&&o[0] == o[1]){
+                return o[0];
+            }else{
+                return v;
+            }
         }
     },
     ready: function () {
